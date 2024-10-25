@@ -13,7 +13,7 @@ class FirstHomeworkApplicationTests {
 
     @Test
     void contextLoads() {
-        System.out.println(testController.test());
+        System.out.println(testController.demo());
     }
 
 }
