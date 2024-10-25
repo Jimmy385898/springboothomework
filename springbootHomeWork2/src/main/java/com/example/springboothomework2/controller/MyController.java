@@ -17,7 +17,7 @@ public class MyController {
 
     @RequestMapping("/hello")
     public String home(String name){
-        name="你的名字";
+        name="输入你的名字";
         System.out.println(person.getId());
         return "hello "+name+",i am from port:"+port;
     }
