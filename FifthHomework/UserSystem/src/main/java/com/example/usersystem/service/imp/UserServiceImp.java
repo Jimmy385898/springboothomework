@@ -30,4 +30,14 @@ public class UserServiceImp implements IUserService {
     public int insertUser(User user) {
         return userDao.insertUser(user);
     }
+
+    /**
+     * 删除用户
+     * @param id 用户id
+     * @return 删除结果
+     */
+    @Override
+    public int delUser(int id) {
+        return userDao.delUser(id);
+    }
 }

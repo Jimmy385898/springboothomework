@@ -21,11 +21,7 @@ public class HtmlUserController {
 
     @RequestMapping("/userall")
     public String userAll(HttpServletRequest request, Model model){
-        List<User> userList=userService.selectAll();
-        System.out.println(userList);
-        model.addAttribute("userlist",userList);
-
-        return "userall";
+        return UserList(model);
     }
 
     @GetMapping("/useradd")
@@ -34,12 +30,28 @@ public class HtmlUserController {
         return "UserAdd";
     }
 
-    @PostMapping("/save")
-    public String save(@ModelAttribute User user){
+    @PostMapping("save")
+    public String save(@ModelAttribute User user,Model model){
         System.out.println(user);
         int myValue = userService.insertUser(user);
-        System.out.println("返回值为："+ myValue);
-        return "UserAdd";
+
+
+        return UserList(model);
     }
+
+    @GetMapping("del")
+    public String Del(int id,Model model){
+        System.out.println("id:"+id);
+        int myValue = userService.delUser(id);
+        return UserList(model);
+    }
+
+    public String UserList(Model model){
+        List<User> userList=userService.selectAll();
+        System.out.println(userList);
+        model.addAttribute("userlist",userList);
+        return "userall";
+    }
+
 
 }
