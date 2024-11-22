@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace = 接口的全限定符 -->
+<mapper namespace="com.example.usersystem.dao.IUserDao">
+    <!-- 返回记录集所用的集合 -->
+    <resultMap id="UserMap" type="com.example.usersystem.model.User">
+        <id column="id" property="id" javaType="int" jdbcType="INTEGER"/>
+        <result column="name" property="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result column="email" property="email" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result column="idcard" property="idcard" javaType="java.lang.String" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!-- 添加 -->
+    <insert id="insertUser" parameterType="com.example.usersystem.model.User">
+        insert into user(name,phone,email,id_card) values(#{name},#{phone},#{email},#{idcard})
+    </insert>
+    <!-- 修改 -->
+    <update id="updateUser" parameterType="com.example.usersystem.model.User">
+        update user set name=#{name},phone=#{phone},email=#{email},idcard=#{idcard} where id=#{id}
+    </update>
+    <!-- 删除 -->
+    <delete id="delUser" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+    <!-- 查询所有数据 -->
+    <select id="selectAll" resultMap="UserMap">
+        select * from user order by id desc
+    </select>
+    <!-- 获取单条数据 -->
+    <select id="getOne" resultType="com.example.usersystem.model.User" parameterType="int">
+        select * from user where id=#{id}
+    </select>
+    <!-- 待条件查询 -->
+    <select id="selectWhere" parameterType="com.example.usersystem.model.User" resultMap="UserMap">
+        select id,name,phone,email,id_card from user
+        <where>
+            <if test="name!=null and name!=''">
+                 name like concat('%',#{name},'%')
+            </if>
+            <if test="phone!=null and phone!=''">
+                and phone = #{phone}
+            </if>
+        </where>
+    </select>
+</mapper>

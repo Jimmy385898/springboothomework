@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css"></link>
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <a th:href="@{/useradd}">添加用户</a>
+    <form action="#" th:action="@{/userWhere}" th:object="${userone}" method="get">
+        用户名：<input type="text" th:field="*{name}">
+        手机号：<input type="text" th:field="*{phone}">
+        <input type="submit" value="查询">
+    </form>
+    <p class="text-success h4">用户信息列表</p>
+    <table class="table table-hover">
+        <tr class="row">
+            <th class="text-center col-sm-3 col-md-3">姓名</th>
+            <th class="text-center col-sm-3 col-md-3">电话</th>
+            <th class="text-center col-sm-3 col-md-3">邮箱</th>
+            <th class="text-center col-sm-3 col-md-3">删除</th>
+        </tr>
+        <tr class="row" th:if="${userlist} ne null " th:each="user : ${userlist}" >
+            <td class="text-center col-sm-3 col-md-3" th:text="${user.name}"></td>
+            <td class="text-center col-sm-3 col-md-3" th:text="${user.phone}"></td>
+            <td class="text-center col-sm-3 col-md-3" th:text="${user.email}"></td>
+            <td class="text-center col-sm-3 col-md-3"><a th:href="@{/del(id=${user.id})}">删除</a></td>
+        </tr>
+    </table>
+</body>
+</html>
