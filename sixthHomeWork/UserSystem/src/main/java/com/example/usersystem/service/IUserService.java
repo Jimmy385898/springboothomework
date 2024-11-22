@@ -23,4 +23,6 @@ public interface IUserService {
      */
     public List<User> selectWhere(User user);
 
+    public int save(User user);
+
 }

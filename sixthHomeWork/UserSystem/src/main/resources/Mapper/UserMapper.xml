@@ -10,7 +10,7 @@
         <result column="name" property="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
         <result column="phone" property="phone" javaType="java.lang.String" jdbcType="VARCHAR"/>
         <result column="email" property="email" javaType="java.lang.String" jdbcType="VARCHAR"/>
-        <result column="idcard" property="idcard" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result column="id_card" property="idcard" javaType="java.lang.String" jdbcType="VARCHAR"/>
     </resultMap>
     <!-- 添加 -->
     <insert id="insertUser" parameterType="com.example.usersystem.model.User">
@@ -18,7 +18,7 @@
     </insert>
     <!-- 修改 -->
     <update id="updateUser" parameterType="com.example.usersystem.model.User">
-        update user set name=#{name},phone=#{phone},email=#{email},idcard=#{idcard} where id=#{id}
+        update user set name=#{name},phone=#{phone},email=#{email},id_card=#{idcard} where id=#{id}
     </update>
     <!-- 删除 -->
     <delete id="delUser" parameterType="int">
@@ -30,7 +30,7 @@
     </select>
     <!-- 获取单条数据 -->
     <select id="getOne" resultType="com.example.usersystem.model.User" parameterType="int">
-        select * from user where id=#{id}
+        select id,name,phone,email,id_card as idcard from user where id=#{id}
     </select>
     <!-- 待条件查询 -->
     <select id="selectWhere" parameterType="com.example.usersystem.model.User" resultMap="UserMap">

@@ -33,7 +33,7 @@ public class HtmlUserController {
     @PostMapping("save")
     public String save(@ModelAttribute User user,Model model){
         System.out.println(user);
-        int myValue = userService.insertUser(user);
+        int myValue = userService.save(user);
 
 
         return UserList(model);
@@ -54,6 +54,13 @@ public class HtmlUserController {
         model.addAttribute("userone",new User());
 
         return "userall";
+    }
+
+    @GetMapping("getone")
+    public String getOne(int id, Model model){
+        User user=userService.getOne(id);
+        model.addAttribute("user",user);
+        return "UserAdd";
     }
 
     public String UserList(Model model){

@@ -8,25 +8,38 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <a th:href="@{/useradd}">添加用户</a>
-    <form action="#" th:action="@{/userWhere}" th:object="${userone}" method="get">
+
+<!--    <form action="#" th:action="@{/userWhere}" th:object="${userone}" method="get">
         用户名：<input type="text" th:field="*{name}">
         手机号：<input type="text" th:field="*{phone}">
         <input type="submit" value="查询">
+    </form>-->
+    <form class="form-inline"  action="#" th:action="@{/userWhere}" th:object="${userone}" method="get">
+        <div class="form-group">
+            <label for="exampleInputName2">用户名</label>
+            <input type="text" class="form-control" id="exampleInputName2" maxlength="10" placeholder="请输入用户名" th:field="*{name}">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail2">手机号</label>
+            <input type="text" class="form-control" id="exampleInputEmail2" maxlength="13" placeholder="请输入手机号" th:field="*{phone}">
+        </div>
+        <button type="submit" class="btn btn-primary">查询</button>
     </form>
     <p class="text-success h4">用户信息列表</p>
-    <table class="table table-hover">
+<!--    <button type="button" class="btn btn-info" th:href="@{/useradd}">添加用户</button>-->
+    <a class="btn btn-info" th:href="@{/useradd}">添加用户</a>
+    <table class="table table-hover table-bordered">
         <tr class="row">
             <th class="text-center col-sm-3 col-md-3">姓名</th>
             <th class="text-center col-sm-3 col-md-3">电话</th>
             <th class="text-center col-sm-3 col-md-3">邮箱</th>
-            <th class="text-center col-sm-3 col-md-3">删除</th>
+            <th class="text-center col-sm-3 col-md-3">操作</th>
         </tr>
         <tr class="row" th:if="${userlist} ne null " th:each="user : ${userlist}" >
             <td class="text-center col-sm-3 col-md-3" th:text="${user.name}"></td>
             <td class="text-center col-sm-3 col-md-3" th:text="${user.phone}"></td>
             <td class="text-center col-sm-3 col-md-3" th:text="${user.email}"></td>
-            <td class="text-center col-sm-3 col-md-3"><a th:href="@{/del(id=${user.id})}">删除</a></td>
+            <td class="text-center col-sm-3 col-md-3"><a th:href="@{/getone(id=${user.id})}">修改</a>|<a th:href="@{/del(id=${user.id})}">删除</a></td>
         </tr>
     </table>
 </body>

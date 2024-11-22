@@ -45,4 +45,19 @@ public class UserServiceImp implements IUserService {
     public List<User> selectWhere(User user) {
         return userDao.selectWhere(user);
     }
+
+    @Override
+    public int save(User user) {
+        if (user!=null) {
+            System.out.println("获取实体当中的主键值 = " + user.getId());
+            if (user.getId()!=0){
+                // 更新
+                return userDao.updateUser(user);
+            }else {
+                // 新增
+                return userDao.insertUser(user);
+            }
+        }
+        return 0;
+    }
 }
