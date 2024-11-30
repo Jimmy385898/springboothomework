@@ -4,11 +4,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class DataController {
+public class DataController { 
 
     @RequestMapping("/getstr")
     public String getStr(){
-        return "我来了";
+        return "当前生效的配置文件是  test";
     }
 
 }

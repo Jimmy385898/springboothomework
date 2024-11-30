@@ -7,18 +7,19 @@
     <!-- 返回记录集所用的集合 -->
     <resultMap id="UserMap" type="com.example.usersystem.model.User">
         <id column="id" property="id" javaType="int" jdbcType="INTEGER"/>
-        <result column="name" property="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
-        <result column="phone" property="phone" javaType="java.lang.String" jdbcType="VARCHAR"/>
-        <result column="email" property="email" javaType="java.lang.String" jdbcType="VARCHAR"/>
-        <result column="idcard" property="idcard" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result column="username" property="username" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result column="password" property="password" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result column="gender" property="gender" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+        <result column="createTime" property="createTime" javaType="java.lang.String" jdbcType="VARCHAR"/>
     </resultMap>
     <!-- 添加 -->
     <insert id="insertUser" parameterType="com.example.usersystem.model.User">
-        insert into user(name,phone,email,idcard) values(#{name},#{phone},#{email},#{idcard})
+        insert into user(username,password,gender,age,createTime) values(#{username},#{password},#{gender},#{age},#{createTime})
     </insert>
     <!-- 修改 -->
     <update id="updateUser" parameterType="com.example.usersystem.model.User">
-        update user set name=#{name},phone=#{phone},email=#{email},idcard=#{idcard} where id=#{id}
+        update user set username=#{username},password=#{password},gender=#{gender},age=#{age} where id=#{id}
     </update>
     <!-- 删除 -->
     <delete id="delUser" parameterType="int">
@@ -27,6 +28,10 @@
     <!-- 查询所有数据 -->
     <select id="selectAll" resultMap="UserMap">
         select * from user order by id desc
+    </select>
+    <!-- 查询数据通过username -->
+    <select id="selectByUsername" resultMap="UserMap" parameterType="string">
+        select id from user where username=#{username}
     </select>
     <!-- 获取单条数据 -->
     <select id="getOne" resultType="com.example.usersystem.model.User" parameterType="int">

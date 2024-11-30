@@ -19,10 +19,10 @@ public class UserDao {
     public List<User> SelectUser(User user){
         List<User> userList = new ArrayList<>();
         User user1 = new User();
-        user1.setId(23);
-        user1.setUsername("zhangsan");
+        user1.setId(20);
+        user1.setUsername("lwy");
         user1.setPwd("123456");
-        user1.setAge(34);
+        user1.setAge(21);
         userList.add(user1);
         userList.add(user);
         return userList;

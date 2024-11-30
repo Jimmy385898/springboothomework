@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加用户表单</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/save}" th:object="${user}" method="post">
+    <p>用户名称：<input type="text" th:field="*{name}"></p>
+    <p>手机号：<input type="text" th:field="*{phone}"></p>
+    <p>邮箱：<input type="text" th:field="*{email}"></p>
+    <p>身份证号：<input type="text" th:field="*{idcard}"></p>
+    <p><input type="submit" value="提交"></p>
+</form>
+
+</body>
+</html>
