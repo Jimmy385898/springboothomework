@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+    <h1>Spring 安全管理</h1>
+    <div>
+        <h3 th:text="${msg}"></h3>
+    </div>
+<div>
+    <div>初级技能</div>
+    <a th:href="@{Java/1}">Java程序技术</a>
+</div>
+    <div>
+        <div>高级技能</div>
+        <a th:href="@{SpringBoot/1}">SpringBoot企业级应用开发</a>
+    </div>
+</body>
+</html>
