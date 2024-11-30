@@ -14,7 +14,7 @@
     </resultMap>
     <!-- 添加 -->
     <insert id="insertUser" parameterType="com.example.usersystem.model.User">
-        insert into user(name,phone,email,idcard) values(#{name},#{phone},#{email},#{idcard})
+        insert into user(name,phone,email,id_card) values(#{name},#{phone},#{email},#{idcard})
     </insert>
     <!-- 修改 -->
     <update id="updateUser" parameterType="com.example.usersystem.model.User">
